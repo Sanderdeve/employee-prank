@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Employee Productivity Scanner</title>
+<title>Power BI Team Productivity Scanner</title>
 
 <style>
   body {
@@ -32,6 +32,7 @@
   #status {
     font-size: 18px;
     margin: 25px 0;
+    min-height: 48px;
   }
 
   .progress-container {
@@ -73,12 +74,14 @@
     background: #ff3333;
     color: white;
     border: none;
-    padding: 18px 25px;
-    font-size: 17px;
+    padding: 20px 28px;
+    font-size: 18px;
     font-weight: bold;
     border-radius: 12px;
     cursor: pointer;
     margin-top: 20px;
+    box-shadow: 0 0 20px #ff333366;
+    transition: transform 0.2s, background 0.2s;
   }
 
   #soundButton:hover {
@@ -86,10 +89,19 @@
     transform: scale(1.05);
   }
 
+  #videoFrame {
+    display: none;
+    margin-top: 25px;
+  }
+
   .small {
     color: #999;
     font-size: 12px;
     margin-top: 25px;
+  }
+
+  .warning {
+    color: #ffcc00;
   }
 </style>
 </head>
@@ -98,12 +110,12 @@
 
 <div class="container">
 
-  <h1>🖥️ CORPORATE PRODUCTIVITY SCANNER</h1>
+  <h1>📊 POWER BI TEAM PRODUCTIVITY SCANNER</h1>
 
-  <p>Advanced employee performance analysis system</p>
+  <p>Enterprise Dashboard Performance & Employee Analytics System</p>
 
   <div id="status">
-    Initialising employee productivity scan...
+    Initialising Power BI workspace diagnostics...
   </div>
 
   <div class="progress-container">
@@ -111,65 +123,81 @@
   </div>
 
   <div id="results">
+
     <h2>⚠️ SCAN RESULTS</h2>
 
-    <p>☕ Coffee dependency: 99.8%</p>
-    <p>💻 Actual productivity: 0.2%</p>
-    <p>🥔 Professional potato level: MAXIMUM</p>
-    <p>📊 Meetings survived: Too many</p>
+    <p>📊 Dashboards successfully created: 847</p>
+    <p>🧮 DAX measures understood: 3.5</p>
+    <p>🔄 Scheduled refreshes failed: 99.9%</p>
+    <p>🔗 Broken relationships detected: ALL OF THEM</p>
+    <p>☕ Coffee dependency: 147%</p>
+    <p>📈 Actual business value delivered: Under investigation</p>
 
-    <h2>🚨 CRITICAL SYSTEM ALERT</h2>
+    <h2 class="warning">🚨 CRITICAL SYSTEM ALERT</h2>
 
     <p>
-      Employee productivity has reached dangerously low levels.
+      Your Power BI team has exceeded the recommended
+      number of dashboards per employee.
     </p>
 
     <p>
-      Emergency entertainment protocol activated...
+      An emergency productivity recovery protocol is required.
     </p>
+
+    <p>
+      Microsoft Fabric has been notified.
+      The situation is considered serious.
+    </p>
+
   </div>
 
   <div id="videoContainer">
 
-    <h2>🔊 EMERGENCY SYSTEM OVERRIDE</h2>
+    <h2>🚨 EMERGENCY SYSTEM OVERRIDE</h2>
 
-    <p>Press SPACE or click below to restore productivity.</p>
+    <p>
+      Your dashboard environment requires immediate intervention.
+    </p>
 
-    <iframe
-      id="rickVideo"
-      src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&enablejsapi=1"
-      title="Rick Astley"
-      allow="autoplay; encrypted-media"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen>
-    </iframe>
+    <p class="warning">
+      Click the button below to initiate the recovery process.
+    </p>
 
-    <br>
-
-    <button id="soundButton" onclick="enableSound()">
-      🔊 PRESS SPACE TO UNLOCK THE REAL EXPERIENCE
+    <button id="soundButton" onclick="startRickroll()">
+      🔊 CLICK HERE TO RESTORE PRODUCTIVITY
     </button>
+
+    <div id="videoFrame"></div>
 
   </div>
 
   <div class="small">
-    Corporate IT Department © 2026 | All systems operational*
+    Power BI Corporate Analytics Department © 2026
     <br>
-    *Probably.
+    All dashboards are monitored. All DAX measures are suspicious.
+    <br><br>
+    *This diagnostic system is not affiliated with Microsoft.
   </div>
 
 </div>
 
 <script>
+
   const messages = [
-    "Scanning employee brain activity...",
-    "Measuring coffee consumption...",
-    "Checking Excel skills...",
-    "Detecting unnecessary meetings...",
-    "Calculating actual productivity...",
-    "Analysing workplace motivation...",
-    "Searching for signs of life...",
-    "Activating emergency entertainment protocol..."
+    "Connecting to Power BI Service...",
+    "Scanning workspace permissions...",
+    "Analysing dashboard performance...",
+    "Checking DAX measures for unnecessary complexity...",
+    "Detecting circular dependencies...",
+    "Investigating suspicious Power Query transformations...",
+    "Checking scheduled refreshes...",
+    "Analysing report usage statistics...",
+    "Searching for the missing relationship...",
+    "Calculating employee coffee dependency...",
+    "Evaluating dashboard visual overload...",
+    "Contacting Microsoft Fabric support...",
+    "Running final productivity assessment...",
+    "Activating emergency recovery protocol..."
   ];
 
   let progress = 0;
@@ -178,72 +206,62 @@
   const progressBar = document.getElementById("progress");
   const status = document.getElementById("status");
 
+  // Approximately 40% longer than the original scan
   const scan = setInterval(() => {
 
-    progress += 2;
+    progress += 1;
 
     progressBar.style.width = progress + "%";
 
-    if (progress % 12 === 0 && messageIndex < messages.length) {
+    if (progress % 7 === 0 && messageIndex < messages.length) {
       status.innerText = messages[messageIndex];
       messageIndex++;
     }
 
     if (progress >= 100) {
+
       clearInterval(scan);
 
-      status.innerText = "SCAN COMPLETE. RESULTS ARE... CONCERNING.";
+      status.innerText =
+        "SCAN COMPLETE. CRITICAL PRODUCTIVITY ANOMALY DETECTED.";
 
       document.getElementById("results").style.display = "block";
 
       setTimeout(() => {
         document.getElementById("videoContainer").style.display = "block";
-      }, 2000);
+      }, 2500);
+
     }
 
-  }, 120);
+  }, 84);
 
-  function enableSound() {
+  function startRickroll() {
 
-    const video = document.getElementById("rickVideo");
+    const button = document.getElementById("soundButton");
+    const videoFrame = document.getElementById("videoFrame");
 
-    video.contentWindow.postMessage(
-      JSON.stringify({
-        event: "command",
-        func: "unMute",
-        args: []
-      }),
-      "*"
-    );
+    // Prevent multiple clicks
+    if (videoFrame.style.display === "block") return;
 
-    video.contentWindow.postMessage(
-      JSON.stringify({
-        event: "command",
-        func: "playVideo",
-        args: []
-      }),
-      "*"
-    );
+    button.innerText = "🚨 INITIATING EMERGENCY RECOVERY...";
+    button.disabled = true;
 
-    document.getElementById("soundButton").innerText =
-      "🎵 NEVER GONNA GIVE YOU UP!";
+    // Create and load the video only after the click
+    videoFrame.innerHTML = `
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1"
+        title="Emergency Productivity Recovery"
+        allow="autoplay; encrypted-media"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    `;
+
+    videoFrame.style.display = "block";
+
+    button.innerText = "🎵 PRODUCTIVITY RESTORED SUCCESSFULLY";
   }
 
-  document.addEventListener("keydown", function(event) {
-
-    if (event.code === "Space" && !event.repeat) {
-
-      // Don't trigger if someone is typing in an input field
-      if (
-        event.target.tagName === "INPUT" ||
-        event.target.tagName === "TEXTAREA"
-      ) return;
-
-      event.preventDefault();
-      enableSound();
-    }
-
-  });
 </script>
 
 </body>
