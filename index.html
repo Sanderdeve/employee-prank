@@ -3,101 +3,94 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Employee Productivity Scanner</title>
 
 <style>
-body {
-    background: #07110c;
-    color: #65ff9a;
+  body {
+    background: #101820;
+    color: #00ff99;
     font-family: Consolas, monospace;
     text-align: center;
     padding: 30px 15px;
-}
+    margin: 0;
+  }
 
-.container {
-    max-width: 650px;
-    margin: 50px auto;
-    padding: 30px;
-    border: 2px solid #65ff9a;
+  .container {
+    max-width: 750px;
+    margin: 40px auto;
+    border: 2px solid #00ff99;
     border-radius: 15px;
-    background: #101c14;
-    box-shadow: 0 0 25px #65ff9a33;
-}
+    padding: 30px 20px;
+    box-shadow: 0 0 25px #00ff9955;
+  }
 
-h1 {
-    color: #65ff9a;
-}
+  h1 {
+    font-size: 30px;
+  }
 
-button {
-    background: #65ff9a;
-    color: black;
-    padding: 15px 25px;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 10px;
-}
+  #status {
+    font-size: 18px;
+    margin: 25px 0;
+  }
 
-button:hover {
-    background: white;
-    transform: scale(1.04);
-}
-
-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-#progress {
-    width: 100%;
-    background: #26382c;
-    height: 15px;
-    border-radius: 10px;
-    margin-top: 20px;
+  .progress-container {
+    background: #263238;
+    height: 25px;
+    border-radius: 20px;
     overflow: hidden;
-}
+    margin: 20px 0;
+  }
 
-#bar {
+  #progress {
     width: 0%;
-    height: 15px;
-    background: #65ff9a;
-    border-radius: 10px;
-    transition: width 0.5s;
-}
-
-#message {
-    line-height: 2;
-    min-height: 30px;
-}
-
-.hidden {
-    display: none;
-}
-
-.big {
-    font-size: 28px;
-}
-
-.video-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;
-    height: 0;
-    margin-top: 20px;
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     height: 100%;
+    background: #00ff99;
+    transition: width 0.3s;
+  }
+
+  #results {
+    display: none;
+    color: white;
+    line-height: 1.8;
+    margin-top: 25px;
+  }
+
+  #videoContainer {
+    display: none;
+    margin-top: 30px;
+  }
+
+  iframe {
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: 16 / 9;
     border: none;
     border-radius: 10px;
-}
+  }
+
+  #soundButton {
+    background: #ff3333;
+    color: white;
+    border: none;
+    padding: 18px 25px;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  #soundButton:hover {
+    background: #cc0000;
+    transform: scale(1.05);
+  }
+
+  .small {
+    color: #999;
+    font-size: 12px;
+    margin-top: 25px;
+  }
 </style>
 </head>
 
@@ -105,124 +98,152 @@ button:disabled {
 
 <div class="container">
 
-<h1>📊 EMPLOYEE PRODUCTIVITY SCANNER</h1>
+  <h1>🖥️ CORPORATE PRODUCTIVITY SCANNER</h1>
 
-<p>Welcome to your official employee assessment.</p>
+  <p>Advanced employee performance analysis system</p>
 
-<p>☕ Measuring coffee consumption...</p>
+  <div id="status">
+    Initialising employee productivity scan...
+  </div>
 
-<div id="message">
-READY TO SCAN...
-</div>
+  <div class="progress-container">
+    <div id="progress"></div>
+  </div>
 
-<div id="progress">
-<div id="bar"></div>
-</div>
+  <div id="results">
+    <h2>⚠️ SCAN RESULTS</h2>
 
-<br>
+    <p>☕ Coffee dependency: 99.8%</p>
+    <p>💻 Actual productivity: 0.2%</p>
+    <p>🥔 Professional potato level: MAXIMUM</p>
+    <p>📊 Meetings survived: Too many</p>
 
-<button id="start" onclick="startScan()">
-🚀 START PRODUCTIVITY SCAN
-</button>
+    <h2>🚨 CRITICAL SYSTEM ALERT</h2>
 
-<div id="results" class="hidden">
+    <p>
+      Employee productivity has reached dangerously low levels.
+    </p>
 
-<h2>🚨 SCAN COMPLETE 🚨</h2>
+    <p>
+      Emergency entertainment protocol activated...
+    </p>
+  </div>
 
-<p>☕ Coffee dependency: 99%</p>
-<p>💻 Productivity: Under investigation</p>
-<p>🥔 Potato level: EXTREMELY HIGH</p>
+  <div id="videoContainer">
 
-<h2>CONGRATULATIONS!</h2>
+    <h2>🔊 EMERGENCY SYSTEM OVERRIDE</h2>
 
-<p class="big">YOU ARE A PROFESSIONAL POTATO 🥔</p>
+    <p>Press SPACE or click below to restore productivity.</p>
 
-<p>One final test remains...</p>
+    <iframe
+      id="rickVideo"
+      src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&enablejsapi=1"
+      title="Rick Astley"
+      allow="autoplay; encrypted-media"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
 
-<button onclick="rickroll()">
-👉 REVEAL YOUR SECRET SCORE 👈
-</button>
+    <br>
 
-</div>
+    <button id="soundButton" onclick="enableSound()">
+      🔊 PRESS SPACE TO UNLOCK THE REAL EXPERIENCE
+    </button>
 
-<div id="final" class="hidden">
+  </div>
 
-<h1 class="big">🕺 YOU'VE BEEN RICKROLLED! 🎶</h1>
-
-<p>Never gonna give you up!</p>
-
-<div class="video-container">
-<iframe
-  width="560"
-  height="315"
-  src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
-  title="Rick Astley"
-  allow="autoplay; encrypted-media"
-  referrerpolicy="strict-origin-when-cross-origin"
-  allowfullscreen>
-</iframe>
-</div>
-
-<p>😂 Have a productive day!</p>
-
-</div>
+  <div class="small">
+    Corporate IT Department © 2026 | All systems operational*
+    <br>
+    *Probably.
+  </div>
 
 </div>
 
 <script>
+  const messages = [
+    "Scanning employee brain activity...",
+    "Measuring coffee consumption...",
+    "Checking Excel skills...",
+    "Detecting unnecessary meetings...",
+    "Calculating actual productivity...",
+    "Analysing workplace motivation...",
+    "Searching for signs of life...",
+    "Activating emergency entertainment protocol..."
+  ];
 
-const messages = [
-"Connecting to coffee network...",
-"Scanning employee keyboard activity...",
-"Measuring laziness...",
-"Analyzing coffee consumption...",
-"Calculating potato potential...",
-"CRITICAL FINDING: PROFESSIONAL POTATO!"
-];
+  let progress = 0;
+  let messageIndex = 0;
 
-function startScan() {
+  const progressBar = document.getElementById("progress");
+  const status = document.getElementById("status");
 
-    const start = document.getElementById("start");
-    const bar = document.getElementById("bar");
-    const message = document.getElementById("message");
-    const results = document.getElementById("results");
+  const scan = setInterval(() => {
 
-    start.disabled = true;
-    start.style.display = "none";
+    progress += 2;
 
-    let i = 0;
+    progressBar.style.width = progress + "%";
 
-    message.textContent = messages[0];
+    if (progress % 12 === 0 && messageIndex < messages.length) {
+      status.innerText = messages[messageIndex];
+      messageIndex++;
+    }
 
-    const timer = setInterval(() => {
+    if (progress >= 100) {
+      clearInterval(scan);
 
-        i++;
+      status.innerText = "SCAN COMPLETE. RESULTS ARE... CONCERNING.";
 
-        bar.style.width = (i / messages.length * 100) + "%";
+      document.getElementById("results").style.display = "block";
 
-        message.textContent =
-            messages[Math.min(i, messages.length - 1)];
+      setTimeout(() => {
+        document.getElementById("videoContainer").style.display = "block";
+      }, 2000);
+    }
 
-        if (i >= messages.length) {
+  }, 120);
 
-            clearInterval(timer);
+  function enableSound() {
 
-            results.classList.remove("hidden");
+    const video = document.getElementById("rickVideo");
 
-        }
+    video.contentWindow.postMessage(
+      JSON.stringify({
+        event: "command",
+        func: "unMute",
+        args: []
+      }),
+      "*"
+    );
 
-    }, 1400);
+    video.contentWindow.postMessage(
+      JSON.stringify({
+        event: "command",
+        func: "playVideo",
+        args: []
+      }),
+      "*"
+    );
 
-}
+    document.getElementById("soundButton").innerText =
+      "🎵 NEVER GONNA GIVE YOU UP!";
+  }
 
-function rickroll() {
+  document.addEventListener("keydown", function(event) {
 
-    document.getElementById("results").classList.add("hidden");
+    if (event.code === "Space" && !event.repeat) {
 
-    document.getElementById("final").classList.remove("hidden");
+      // Don't trigger if someone is typing in an input field
+      if (
+        event.target.tagName === "INPUT" ||
+        event.target.tagName === "TEXTAREA"
+      ) return;
 
-}
+      event.preventDefault();
+      enableSound();
+    }
 
+  });
 </script>
 
 </body>
