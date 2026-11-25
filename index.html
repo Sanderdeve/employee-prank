@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Employee Productivity Scanner</title>
+
+<style>
+body {
+    background: #07110c;
+    color: #65ff9a;
+    font-family: Consolas, monospace;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+.container {
+    max-width: 650px;
+    margin: 50px auto;
+    padding: 30px;
+    border: 2px solid #65ff9a;
+    border-radius: 15px;
+    background: #101c14;
+    box-shadow: 0 0 25px #65ff9a33;
+}
+
+h1 {
+    color: #65ff9a;
+}
+
+button {
+    background: #65ff9a;
+    color: black;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+button:hover {
+    background: white;
+    transform: scale(1.04);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#progress {
+    width: 100%;
+    background: #26382c;
+    height: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+#bar {
+    width: 0%;
+    height: 15px;
+    background: #65ff9a;
+    border-radius: 10px;
+    transition: width 0.5s;
+}
+
+#message {
+    line-height: 2;
+    min-height: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+.big {
+    font-size: 28px;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    margin-top: 20px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📊 EMPLOYEE PRODUCTIVITY SCANNER</h1>
+
+<p>Welcome to your official employee assessment.</p>
+
+<p>☕ Measuring coffee consumption...</p>
+
+<div id="message">
+READY TO SCAN...
+</div>
+
+<div id="progress">
+<div id="bar"></div>
+</div>
+
+<br>
+
+<button id="start" onclick="startScan()">
+🚀 START PRODUCTIVITY SCAN
+</button>
+
+<div id="results" class="hidden">
+
+<h2>🚨 SCAN COMPLETE 🚨</h2>
+
+<p>☕ Coffee dependency: 99%</p>
+<p>💻 Productivity: Under investigation</p>
+<p>🥔 Potato level: EXTREMELY HIGH</p>
+
+<h2>CONGRATULATIONS!</h2>
+
+<p class="big">YOU ARE A PROFESSIONAL POTATO 🥔</p>
+
+<p>One final test remains...</p>
+
+<button onclick="rickroll()">
+👉 REVEAL YOUR SECRET SCORE 👈
+</button>
+
+</div>
+
+<div id="final" class="hidden">
+
+<h1 class="big">🕺 YOU'VE BEEN RICKROLLED! 🎶</h1>
+
+<p>Never gonna give you up!</p>
+
+<div class="video-container">
+<iframe
+    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+    title="Never Gonna Give You Up"
+    allow="autoplay; encrypted-media; picture-in-picture"
+    allowfullscreen>
+</iframe>
+</div>
+
+<p>😂 Have a productive day!</p>
+
+</div>
+
+</div>
+
+<script>
+
+const messages = [
+"Connecting to coffee network...",
+"Scanning employee keyboard activity...",
+"Measuring laziness...",
+"Analyzing coffee consumption...",
+"Calculating potato potential...",
+"CRITICAL FINDING: PROFESSIONAL POTATO!"
+];
+
+function startScan() {
+
+    const start = document.getElementById("start");
+    const bar = document.getElementById("bar");
+    const message = document.getElementById("message");
+    const results = document.getElementById("results");
+
+    start.disabled = true;
+    start.style.display = "none";
+
+    let i = 0;
+
+    message.textContent = messages[0];
+
+    const timer = setInterval(() => {
+
+        i++;
+
+        bar.style.width = (i / messages.length * 100) + "%";
+
+        message.textContent =
+            messages[Math.min(i, messages.length - 1)];
+
+        if (i >= messages.length) {
+
+            clearInterval(timer);
+
+            results.classList.remove("hidden");
+
+        }
+
+    }, 1400);
+
+}
+
+function rickroll() {
+
+    document.getElementById("results").classList.add("hidden");
+
+    document.getElementById("final").classList.remove("hidden");
+
+}
+
+</script>
+
+</body>
+</html>
